@@ -1,0 +1,21 @@
+{
+  "git_commit": "ee97b21",
+  "n_eligible_sellers": 626,
+  "decision": "EXPAND TARGETED TEST",
+  "srm_p": 0.23051194512492396,
+  "cuped_estimate_brl": -18.26966322493854,
+  "cuped_ci_brl": [
+    -292.4379238821336,
+    255.8985974322565
+  ],
+  "cuped_p_value": 0.8959274516461683,
+  "variance_reduction_pct": 63.97,
+  "achieved_mde_rel_pct": 24.99,
+  "strike_did_days": 0.31254964674351887,
+  "impact_mc": {
+    "median_net_wk_brl": -25364.87974960591,
+    "p10_net_wk_brl": -35350.48817745195,
+    "p90_net_wk_brl": -15207.575204450644,
+    "prob_positive": 0.0
+  }
+}

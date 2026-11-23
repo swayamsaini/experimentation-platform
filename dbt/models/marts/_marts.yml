@@ -1,0 +1,50 @@
+version: 2
+models:
+  - name: dim_seller
+    columns: [{name: seller_key, data_tests: [unique, not_null]}]
+  - name: dim_customer
+    columns: [{name: customer_key, data_tests: [unique, not_null]}]
+  - name: dim_product
+    columns: [{name: product_key, data_tests: [unique, not_null]}]
+  - name: dim_date
+    columns: [{name: date_key, data_tests: [unique, not_null]}]
+  - name: fct_order_items
+    description: "One row per order line item. Grain: (order_id, order_item_id)."
+    columns:
+      - name: order_item_key
+        data_tests: [unique, not_null]
+      - name: seller_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_seller')
+              field: seller_key
+      - name: customer_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_key
+      - name: product_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_key
+      - name: price
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+  - name: mart_seller_week
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [seller_key, week_start]
+
+exposures:
+  - name: experimentation_streamlit_app
+    type: dashboard
+    maturity: high
+    description: "Six-page self-serve Streamlit dashboard reading from data/exports/results.duckdb."
+    depends_on: [ref('mart_seller_week'), ref('mart_customer_cohort'), ref('mart_order_funnel')]
+    owner: {name: "Swayam Saini"}
