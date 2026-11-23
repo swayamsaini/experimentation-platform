@@ -1,0 +1,27 @@
+Metadata-Version: 2.4
+Name: expkit
+Version: 1.0.0
+Summary: Experimentation and Causal Impact Platform on Olist Marketplace Data
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: duckdb>=1.1.0
+Requires-Dist: pandas>=2.2.0
+Requires-Dist: numpy>=1.26.0
+Requires-Dist: scipy>=1.13.0
+Requires-Dist: statsmodels>=0.14.2
+Requires-Dist: scikit-learn>=1.5.0
+Requires-Dist: econml>=0.15.0
+Requires-Dist: matplotlib>=3.9.0
+Requires-Dist: plotly>=5.22.0
+Requires-Dist: streamlit>=1.37.0
+Requires-Dist: pyarrow>=17.0.0
+Requires-Dist: dbt-core>=1.8.0
+Requires-Dist: dbt-duckdb>=1.8.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.2.0; extra == "dev"
+Requires-Dist: hypothesis>=6.108.0; extra == "dev"
+Requires-Dist: ruff>=0.5.0; extra == "dev"
+Requires-Dist: sqlfluff>=3.1.0; extra == "dev"
+Requires-Dist: sqlfluff-templater-dbt>=3.1.0; extra == "dev"
+Requires-Dist: pre-commit>=3.7.0; extra == "dev"
+Requires-Dist: kaggle>=1.6.0; extra == "dev"

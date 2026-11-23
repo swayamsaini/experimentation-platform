@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "expkit"
+version = "1.0.0"
+description = "Experimentation and Causal Impact Platform on Olist Marketplace Data"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "duckdb>=1.1.0",
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "scipy>=1.13.0",
+    "statsmodels>=0.14.2",
+    "scikit-learn>=1.5.0",
+    "econml>=0.15.0",
+    "matplotlib>=3.9.0",
+    "plotly>=5.22.0",
+    "streamlit>=1.37.0",
+    "pyarrow>=17.0.0",
+    "dbt-core>=1.8.0",
+    "dbt-duckdb>=1.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "hypothesis>=6.108.0",
+    "ruff>=0.5.0",
+    "sqlfluff>=3.1.0",
+    "sqlfluff-templater-dbt>=3.1.0",
+    "pre-commit>=3.7.0",
+    "kaggle>=1.6.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: Monte Carlo simulation tests (run nightly in CI)"]
+addopts = "-ra"
